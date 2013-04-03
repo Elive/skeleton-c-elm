@@ -1,14 +1,14 @@
 #include <Elementary.h>
 
 static void
-on_done(void *data, Evas_Object *obj, void *event_info)
+on_done(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
    // quit the mainloop (elm_run function will return)
    elm_exit();
 }
 
 EAPI_MAIN int
-elm_main(int argc, char **argv)
+elm_main(int argc EINA_UNUSED, char **argv EINA_UNUSED)
 {
    Evas_Object *win, *box, *lab, *btn;
 
