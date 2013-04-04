@@ -143,6 +143,7 @@ requirement_autofoo="elementary >= 1.7.0 evas >= 1.7.0 ecore-file >= 1.7.0 ecore
 PKG_CHECK_MODULES([ELEMENTARY],
    [ $requirement_autofoo ])
 
+AC_SUBST(requirement_autofoo)
 
 # Checks for library functions.
 
@@ -180,7 +181,24 @@ case "$host_os" in
 esac
 AC_SUBST(lt_enable_auto_import)
 
-AC_SUBST(requirement_autofoo)
+### Checks for additional options
+
+with_max_log_level="3"
+AC_ARG_WITH(maximum-log-level,
+   [AC_HELP_STRING([--with-maximum-log-level=NUMBER],
+   [ignoring any EINA_LOG() with level greater than ${with_max_log_level}.])],
+   [
+      if test "x${withval}" != "xno"; then
+         if echo "${withval}" | grep -E '^[[0-9]]+$' >/dev/null 2>/dev/null; then
+            AC_MSG_NOTICE([ignoring any EINA_LOG() with level greater than ${withval}])
+            with_max_log_level="${withval}"
+         else
+            AC_MSG_ERROR([--with-maximum-log-level takes a decimal number, got "${withval}" instead.])
+         fi
+      fi
+   ], [:])
+
+AC_DEFINE_UNQUOTED(EINA_LOG_LEVEL_MAXIMUM, ${with_max_log_level}, [if set, logging is limited to this amount.])
 
 AC_OUTPUT([
    Makefile
