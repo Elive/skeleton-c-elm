@@ -201,6 +201,7 @@ AC_ARG_WITH(maximum-log-level,
 AC_DEFINE_UNQUOTED(EINA_LOG_LEVEL_MAXIMUM, ${with_max_log_level}, [if set, logging is limited to this amount.])
 
 AC_OUTPUT([
+   autofoo.pc
    Makefile
    src/Makefile
    src/bin/Makefile

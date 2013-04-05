@@ -33,3 +33,5 @@ EXTRA_DIST = \
    autogen.sh \
    autofoo.pc.in
 
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = autofoo.pc
