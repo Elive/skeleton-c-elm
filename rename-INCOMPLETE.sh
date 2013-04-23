@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo -e temporally disabled ; exit 1
 # short name
 XXappnameXX="spoon"
 # Caps name
